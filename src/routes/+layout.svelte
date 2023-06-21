@@ -1,7 +1,8 @@
 <script>
   import '../app.css';
+  import Navbar from '../components/Navbar.svelte';
 </script>
 
-<h1>Header</h1>
+<Navbar />
 <slot />
 <h4>Footer</h4>
