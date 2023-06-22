@@ -16,3 +16,14 @@ export const getAllPosts = async () => {
   const allPosts = await client.fetch(allPostsQuery);
   return allPosts;
 };
+
+export const getPostBySlug = async (
+  /** @type {string} */
+  slug
+) => {
+  const client = sanityClient();
+  const postQuery =
+    '*[_type == "post" && slug.current == $slug]{title, "slug": slug.current, author->{ name }, "date": publishedAt, "content": body}';
+  const post = await client.fetch(postQuery, { slug });
+  return post;
+};
